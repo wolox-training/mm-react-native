@@ -1,1 +1,0 @@
-# mm-react-native
