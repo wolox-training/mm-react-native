@@ -1,0 +1,11 @@
+.techs {
+  display: flex;
+}
+
+.tech {
+  background-color: $green;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100px;
+  align-items: center;
+}
