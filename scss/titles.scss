@@ -3,13 +3,14 @@
   font-size: 22px;
   display: flex;
   margin: 50px 0 0 100px;
+  position: relative;
 
   &:before {
     content: '';
     background-image: url('assets/triangle.svg');
     background-size: 100px 90px;
     height: 90px;
-    left: 33px;
+    left: -65px;
     position: absolute;
     top: auto;
     width: 100px;
@@ -19,5 +20,4 @@
 
 .titles {
   margin: 100px 0 50px 100px;
-  position: relative;
 }

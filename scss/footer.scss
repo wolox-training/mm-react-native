@@ -1,6 +1,5 @@
 .footer {
   background: $blue;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   height: 200px;
@@ -11,19 +10,18 @@
 
 .footer-text {
   align-self: center;
-  color: white;
+  color: $white;
   font-size: 24px;
   margin-bottom: 30px;
-  position: relative;
 }
 
 .footer-logo {
   align-self: center;
-  position: relative;
+  height: 70px;
 }
 
 .footer-copyright {
-  color: white;
+  color: $white;
   font-size: 10px;
   position: absolute;
   right: 20px;

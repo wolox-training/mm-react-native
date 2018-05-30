@@ -19,7 +19,7 @@
     top: -10px;
     width: 200px;
     z-index: -1;
-    
+
     transition: linear all 200ms;
   }
 
@@ -32,28 +32,26 @@
 .tech-title {
   font-size: 16px;
   margin-top: 5px;
-  position: relative;
 }
 
 .tech-release {
   font-weight: bold;
   margin-top: 10px;
-  position: relative;
 }
 
 .tech-description {
   text-align: center;
-  margin: 15px 15px 5px 15px;
-  position: relative;
+  margin: 15px 15px 5px;
 }
 
 .tech-image {
+  height: 100px;
   margin-top: 15px;
-  position: relative;
+  width: 100px;
 }
 
 .techs {
   display: flex;
   flex-wrap: wrap;
-  margin: 50px 200px 50px 200px;
+  margin: 50px 200px;
 }
