@@ -19,6 +19,14 @@
     top: -10px;
     width: 200px;
     z-index: -1;
+
+    transform-origin: left top;
+    transition: linear all 200ms;
+  }
+
+  &:hover:before {
+    left: 10px;
+    top: 10px;
   }
 }
 
