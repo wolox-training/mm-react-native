@@ -5,9 +5,9 @@
   flex-direction: column;
   display: flex;
   height: 300px;
-  margin: 100px 0 0 50px;
+  margin: 30px 0 0 50px;
   position: relative;
-  width: 150px;
+  width: 200px;
 
   &:before {
     content: '';
@@ -46,5 +46,7 @@
 }
 
 .techs {
-  margin: 50px 0 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 200px 50px 200px;
 }
