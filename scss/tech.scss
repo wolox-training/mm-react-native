@@ -1,38 +1,31 @@
 .tech {
-  align-self: center;
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 100px 30px 30px 150px;
   height: 300px;
-  place-self: center;
+  place-items: center;
   width: 200px;
 }
 
 .tech-image {
-  align-self: center;
   grid-row: 1/2;
   height: 100px;
-  place-self: center;
   width: 100px;
 }
 
 .tech-title {
-  align-self: center;
   font-size: 16px;
   grid-row: 2/3;
-  place-self: center;
 }
 
 .tech-release {
-  align-self: center;
   font-weight: bold;
   grid-row: 3/4;
-  place-self: center;
 }
 
 .tech-description {
-  align-self: top;
+  align-self: start;
   grid-row: 4/5;
   text-align: center;
 }

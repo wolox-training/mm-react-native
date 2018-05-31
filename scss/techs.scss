@@ -1,16 +1,13 @@
 .techs {
-  align-self: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 50% 50%;
-  grid-row: 3/4;
-  margin: 0 200px;
-  place-self: center;
+  grid-row-gap: 30px;
+  margin: 0 300px;
+  place-items: center;
 }
 
 .big-tech {
-  border-right: 2px;
-  border-color: $green;
   grid-column: 1/2;
   grid-row: 1/3;
 }

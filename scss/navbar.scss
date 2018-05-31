@@ -1,4 +1,5 @@
 .navbar {
+  align-items: center;
   background: $white;
   box-shadow: 5px 10px 8px $grey;
   display: grid;
@@ -13,13 +14,11 @@
 }
 
 .navbar-logo {
-  align-self: center;
   grid-column: 1/2;
   height: 40px;
 }
 
-.navbar-text {
-  align-self: center;
+.navbar-text {  
   grid-column: 3/4;
   font-size: 30px;
 }

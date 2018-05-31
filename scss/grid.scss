@@ -1,25 +1,40 @@
 .content {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 100px 150px 650px 150px 300px 200px;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px 200px 600px 200px 300px 200px;
+  grid-template-areas:
+  "navbar"
+  "front-title"
+  "front-techs"
+  "back-title"
+  "back-techs"
+  "footer"
 }
 
 .navbar {
-  grid-row: 1/2;
+  grid-area: navbar;
 }
 
 .front-title {
-  grid-row: 2/3;
+  align-self: bottom;
+  grid-area: front-title;
 }
 
 .front-techs {
-  grid-row: 3/4;
+  align-self: center;
+  grid-area: front-techs;
 }
 
 .back-title {
-  grid-row: 4/5;
+  align-self: bottom;
+  grid-area: back-title;
 }
 
 .back-techs {
-  grid-row: 5/6;
+  align-self: center;
+  grid-area: back-techs;
+}
+
+.footer {
+  grid-area: footer;
 }
