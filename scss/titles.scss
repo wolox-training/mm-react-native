@@ -1,6 +1,7 @@
 .title {
   font-size: 22px;
   margin: 50px 0 0 50px;
+  padding-left: 100px;
   position: relative;
 
   &:before {
@@ -8,21 +9,10 @@
     background-image: url('assets/triangle.svg');
     background-size: 100px 90px;
     height: 90px;
-    left: -65px;
+    left: 35px;
     position: absolute;
     top: -38px;
     width: 100px;
     z-index: -1;
-  }
-}
-
-.titles {
-  margin: 0 0 0 100px;
-}
-
-@media only screen and (max-width: 1024px) {
-  .titles {
-    align-self: center;
-    margin: auto;
   }
 }
