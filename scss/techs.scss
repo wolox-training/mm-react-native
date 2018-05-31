@@ -1,6 +1,7 @@
 .techs {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 5px 1fr 1fr;
   grid-template-rows: 50% 50%;
   grid-row-gap: 30px;
   margin: 0 300px;
@@ -10,4 +11,11 @@
 .big-tech {
   grid-column: 1/2;
   grid-row: 1/3;
+}
+
+.separator {
+  border: 1px solid $green;
+  grid-column: 2/3;
+  grid-row: 1/3;
+  height: 600px;
 }
