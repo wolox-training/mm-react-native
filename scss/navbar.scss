@@ -2,10 +2,8 @@
   background: $white;
   box-shadow: 5px 10px 8px $grey;
   display: grid;
-  grid-column: 2/3;
-  grid-row: 1/2;
   grid-template-columns: 300px auto 300px;
-  grid-template-rows: 30px 40px 30px;
+  height: 90px;
   left: 0;
   padding: 0 30px;
   position: fixed;
@@ -15,13 +13,13 @@
 }
 
 .navbar-logo {
+  align-self: center;
   grid-column: 1/2;
-  grid-row: 2/3;
   height: 40px;
 }
 
 .navbar-text {
+  align-self: center;
   grid-column: 3/4;
-  grid-row: 2/3;
   font-size: 30px;
 }

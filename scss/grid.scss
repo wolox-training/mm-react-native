@@ -1,0 +1,25 @@
+.content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 100px 150px 650px 150px 300px 200px;
+}
+
+.navbar {
+  grid-row: 1/2;
+}
+
+.front-title {
+  grid-row: 2/3;
+}
+
+.front-techs {
+  grid-row: 3/4;
+}
+
+.back-title {
+  grid-row: 4/5;
+}
+
+.back-techs {
+  grid-row: 5/6;
+}
