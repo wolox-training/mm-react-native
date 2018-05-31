@@ -1,6 +1,6 @@
 .title {
   font-size: 22px;
-  margin: 50px 0 0 100px;
+  margin: 50px 0 0 50px;
   position: relative;
 
   &:before {
@@ -18,4 +18,11 @@
 
 .titles {
   margin: 0 0 0 100px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .titles {
+    align-self: center;
+    margin: auto;
+  }
 }

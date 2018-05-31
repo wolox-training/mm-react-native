@@ -1,7 +1,7 @@
 .footer {
   background: $blue;
   display: grid;
-  grid-template-rows: 45% 45% 10%;
+  grid-template-rows: 40 50% 10%;
   height: 200px;
   place-items: center;
   width: 100%;
@@ -10,12 +10,10 @@
 .footer-text {
   color: $white;
   font-size: 24px;
-  grid-column: 2/3;
   grid-row: 1/2;
 }
 
 .footer-logo {
-  grid-column: 2/3;
   grid-row: 2/3;
   height: 70px;
 }
@@ -23,8 +21,29 @@
 .footer-copyright {
   color: $white;
   font-size: 10px;
-  grid-column: 3/4;
   grid-row: 3/4;
   margin: 0 20px 15px 0;
   place-self: end end;
+}
+
+@media only screen and (max-width: 1024px) {
+  .footer {
+    height: 100px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    grid-row: 1/2;
+  }
+
+  .footer-logo {
+    height: 30px;
+    grid-row: 2/3;
+  }
+
+  .footer-copyright {
+    grid-row: 3/4;
+    margin: 0 0 5px 0;
+    place-self: center center;
+  }
 }
