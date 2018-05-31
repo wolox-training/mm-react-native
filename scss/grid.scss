@@ -14,11 +14,13 @@
 
 .navbar {
   grid-area: navbar;
+  width: 100vw;
 }
 
 .front-title {
   align-self: bottom;
   grid-area: front-title;
+  width: fit-content;
 }
 
 .front-techs {
@@ -29,6 +31,7 @@
 .back-title {
   align-self: bottom;
   grid-area: back-title;
+  width: fit-content;
 }
 
 .back-techs {
