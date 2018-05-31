@@ -1,19 +1,23 @@
 .title {
-  display: flex;
   align-items: center;
-  font-size: 16px;
-  margin-top: 50px;
-  margin-left: 100px;
+  font-size: 22px;
+  display: flex;
+  margin: 50px 0 0 100px;
+  position: relative;
 
   &:before {
     content: '';
     background-image: url('assets/triangle.svg');
     background-size: 100px 90px;
-    width: 100px;
     height: 90px;
+    left: -65px;
     position: absolute;
-    left: 32px;
-    z-index: -1;
     top: auto;
+    width: 100px;
+    z-index: -1;
   }
+}
+
+.titles {
+  margin: 100px 0 50px 100px;
 }

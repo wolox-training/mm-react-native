@@ -1,0 +1,29 @@
+.footer {
+  background: $blue;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.footer-text {
+  align-self: center;
+  color: $white;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.footer-logo {
+  align-self: center;
+  height: 70px;
+}
+
+.footer-copyright {
+  color: $white;
+  font-size: 10px;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+}

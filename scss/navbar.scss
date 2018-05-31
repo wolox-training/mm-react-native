@@ -1,0 +1,23 @@
+.navbar {
+  background: $white;
+  box-shadow: 5px 10px 8px $grey;
+  display: flex;
+  height: 90px;
+  justify-content: space-between;
+  left: 0;
+  padding: 0 30px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.navbar-logo {
+  align-self: center;
+  height: 40px;
+}
+
+.navbar-text {
+  align-self: center;
+  font-size: 30px;
+}
