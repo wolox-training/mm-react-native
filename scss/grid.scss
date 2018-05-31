@@ -1,0 +1,41 @@
+.content {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px 100px 650px 100px 650px 200px;
+  grid-row-gap: 50px;
+  grid-template-areas:
+  "navbar"
+  "front-title"
+  "front-techs"
+  "back-title"
+  "back-techs"
+  "footer"
+}
+
+.navbar {
+  grid-area: navbar;
+}
+
+.front-title {
+  align-self: bottom;
+  grid-area: front-title;
+}
+
+.front-techs {
+  align-self: center;
+  grid-area: front-techs;
+}
+
+.back-title {
+  align-self: bottom;
+  grid-area: back-title;
+}
+
+.back-techs {
+  align-self: center;
+  grid-area: back-techs;
+}
+
+.footer {
+  grid-area: footer;
+}

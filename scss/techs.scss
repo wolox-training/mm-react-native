@@ -1,0 +1,17 @@
+.techs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50% 50%;
+  grid-row-gap: 30px;
+  margin: 0 300px;
+  place-items: center;
+}
+
+.big-tech {
+  border-right: 2px solid $green;
+  grid-column: 1/2;
+  grid-row: 1/3;
+  height: 600px;
+  padding-top: 200px;
+}
