@@ -1,7 +1,7 @@
 .title {
   font-size: 22px;
-  margin: 50px 0 0 100px;
-  padding-left: 100px;
+  left: 30px;
+  margin: 50px 0 0 50px;
   position: relative;
 
   &:before {
@@ -9,7 +9,7 @@
     background-image: url('assets/triangle.svg');
     background-size: 100px 90px;
     height: 90px;
-    left: 35px;
+    left: -65px;
     position: absolute;
     top: -38px;
     width: 100px;

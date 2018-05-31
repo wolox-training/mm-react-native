@@ -5,7 +5,7 @@
   height: 300px;
   padding: 0 25px;
   place-items: center;
-  width: 250px
+  width: 250px;
 }
 
 .tech-image {
@@ -28,4 +28,10 @@
   align-self: start;
   grid-row: 4/5;
   text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  .tech{
+    border-bottom: 2px solid $green;
+  }
 }
