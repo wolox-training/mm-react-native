@@ -15,3 +15,25 @@
   height: 600px;
   padding-top: 200px;
 }
+
+
+@media only screen and (max-width: 1024px) {
+  .techs {
+    grid-auto-flow: row;
+    grid-template-columns: 200px;
+    grid-template-rows: repeat(auto-fill, 300px);
+    grid-row-gap: 30px;
+    margin: 0 20px;
+    justify-items: center;
+    justify-self: center;
+  }
+
+  .big-tech {
+    border-bottom: 2px solid $green;
+    border-right: none;
+    grid-column: auto;
+    grid-row: auto;
+    height: 300px;
+    padding: 0;
+  }
+}
