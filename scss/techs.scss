@@ -1,0 +1,15 @@
+.techs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50% 50%;
+  grid-row: 3/4;
+  margin: 50px 200px;
+}
+
+.front-techs {
+  grid-row: 3/4;
+}
+
+.back-techs {
+  grid-row: 5/6;
+}

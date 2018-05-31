@@ -1,29 +1,36 @@
 .footer {
   background: $blue;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-row: 6/7;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 45% 45% 10%;
   height: 200px;
-  justify-content: center;
-  position: relative;
+  padding: 0 20px 15px 0;
   width: 100%;
 }
 
 .footer-text {
-  align-self: center;
+  align-self: bottom;
   color: $white;
   font-size: 24px;
-  margin-bottom: 30px;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  place-self: center;
 }
 
 .footer-logo {
-  align-self: center;
+  align-self: bottom;
+  grid-column: 2/3;
+  grid-row: 2/3;
   height: 70px;
+  place-self: center;
 }
 
 .footer-copyright {
+  align-self: end;
   color: $white;
   font-size: 10px;
-  position: absolute;
-  right: 20px;
-  bottom: 15px;
+  grid-column: 3/4;
+  grid-row: 3/4;
+  place-self: end;
 }

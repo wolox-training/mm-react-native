@@ -1,7 +1,5 @@
 .title {
-  align-items: center;
   font-size: 22px;
-  display: flex;
   margin: 50px 0 0 100px;
   position: relative;
 
@@ -12,7 +10,7 @@
     height: 90px;
     left: -65px;
     position: absolute;
-    top: auto;
+    top: -38px;
     width: 100px;
     z-index: -1;
   }
@@ -20,4 +18,12 @@
 
 .titles {
   margin: 100px 0 50px 100px;
+}
+
+.front-title {
+  grid-row: 2/3;
+}
+
+.back-title {
+  grid-row: 4/5;
 }
