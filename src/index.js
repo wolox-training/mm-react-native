@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './scss/index.scss';
+import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import App from './app/components/App';
+import Game from './app/screens/Game'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Game />, document.getElementById('root'));
 registerServiceWorker();
