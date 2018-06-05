@@ -1,8 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import './styles.css';
+import gameActions from '../../redux/Game/actions';
 
 import Board from './components/Board';
+import './styles.css';
 
 /* eslint-disable react/no-array-index-key */
 
@@ -38,7 +41,11 @@ class Game extends React.Component {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
+
+    this.props.dispatch(gameActions.changeSquareStatus(i, this.state.xIsNext ? 'X' : 'O'));
+
     squares[i] = this.state.xIsNext ? 'X' : 'O';
+
     this.setState({
       history: history.concat([
         {
@@ -61,7 +68,8 @@ class Game extends React.Component {
     const { history } = this.state;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
+    console.log(this.props.squareList);
+    console.log(this.props.history);
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : 'Go to game start';
       return (
@@ -92,4 +100,16 @@ class Game extends React.Component {
   }
 }
 
-export default Game;
+Game.propTypes = {
+  squareList: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      value: PropTypes.string
+  }))
+};
+
+const mapStateToProps = store => ({
+  squareList: store.squareList,
+  history: store.history
+});
+
+export default connect(mapStateToProps)(Game);
