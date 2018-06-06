@@ -6,7 +6,7 @@ import './styles.css';
 
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
+    return <Square value={this.props.squares[i].value} onClick={() => this.props.onClick(i)} />;
   }
 
   render() {
@@ -33,7 +33,7 @@ class Board extends React.Component {
 }
 
 Board.propTypes = {
-  squares: PropTypes.node,
+  squares: PropTypes.array,
   onClick: PropTypes.func
 };
 

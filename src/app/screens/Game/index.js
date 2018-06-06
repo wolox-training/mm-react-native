@@ -9,67 +9,20 @@ import './styles.css';
 
 /* eslint-disable react/no-array-index-key */
 
-function calculateWinner(squares) {
-  const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
-  for (let i = 0; i < lines.length; i += 1) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
-}
-
 class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
-
   handleClick(i) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
-    const current = history[history.length - 1];
-    const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
-
-    this.props.dispatch(gameActions.changeSquareStatus(i, this.state.xIsNext ? 'X' : 'O'));
-
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-
-    this.setState({
-      history: history.concat([
-        {
-          squares
-        }
-      ]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
-    });
+    this.props.dispatch(gameActions.changeSquareStatus(i, this.props.xIsNext ? 'X' : 'O'));
   }
 
   jumpTo(step) {
-    this.setState({
-      stepNumber: step,
-      xIsNext: step % 2 === 0
-    });
+    this.props.dispatch(gameActions.jumpToStep(step));
   }
 
   render() {
-    const { history } = this.state;
-    const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
-    console.log(this.props.squareList);
-    console.log(this.props.history);
+    const { history } = this.props;
+    const current = history[this.props.stepNumber];
+    const { winner } = this.props;
+
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : 'Go to game start';
       return (
@@ -83,13 +36,13 @@ class Game extends React.Component {
     if (winner) {
       status = `Winner: ${winner}`;
     } else {
-      status = `Next player: ${this.state.xIsNext ? 'X' : 'O'}`;
+      status = `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
     }
 
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
+          <Board squares={current.squareList} onClick={i => this.handleClick(i)} />
         </div>
         <div className="game-info">
           <div>{status}</div>
@@ -101,15 +54,22 @@ class Game extends React.Component {
 }
 
 Game.propTypes = {
-  squareList: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      value: PropTypes.string
-  }))
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string }))
+    })
+  ),
+  xIsNext: PropTypes.bool,
+  stepNumber: PropTypes.number,
+  winner: PropTypes.string
 };
 
 const mapStateToProps = store => ({
   squareList: store.squareList,
-  history: store.history
+  history: store.history,
+  stepNumber: store.stepNumber,
+  xIsNext: store.xIsNext,
+  winner: store.winner
 });
 
 export default connect(mapStateToProps)(Game);

@@ -1,3 +1,6 @@
 module.exports = {
-    "extends": "wolox"
+    "extends": "wolox",
+    rules:{
+    "linebreak-style": 0
+  }
 };
