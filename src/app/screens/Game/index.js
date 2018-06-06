@@ -64,11 +64,11 @@ Game.propTypes = {
 };
 
 const mapStateToProps = store => ({
-  squareList: store.squareList,
-  history: store.history,
-  stepNumber: store.stepNumber,
-  xIsNext: store.xIsNext,
-  winner: store.winner
+  squareList: store.game.squareList,
+  history: store.game.history,
+  stepNumber: store.game.stepNumber,
+  xIsNext: store.game.xIsNext,
+  winner: store.game.winner
 });
 
 export default connect(mapStateToProps)(Game);
