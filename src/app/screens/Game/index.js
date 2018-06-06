@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -9,10 +9,25 @@ import './styles.css';
 
 /* eslint-disable react/no-array-index-key */
 
-class Game extends React.Component {
-  handleClick(i) {
-    this.props.dispatch(gameActions.changeSquareStatus(i, this.props.xIsNext ? 'X' : 'O'));
+class Game extends Component {
+  getStatus(winner) {
+    return winner ? `Winner: ${winner}` : `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
   }
+
+  getMoves(history) {
+    return history.map((step, move) => {
+      const desc = move ? `Go to move #${move}` : 'Go to game start';
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      );
+    });
+  }
+
+  handleClick = index => {
+    this.props.dispatch(gameActions.changeSquareStatus(index, this.props.xIsNext ? 'X' : 'O'));
+  };
 
   jumpTo(step) {
     this.props.dispatch(gameActions.jumpToStep(step));
@@ -23,30 +38,14 @@ class Game extends React.Component {
     const current = history[this.props.stepNumber];
     const { winner } = this.props;
 
-    const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
-    });
-
-    let status;
-    if (winner) {
-      status = `Winner: ${winner}`;
-    } else {
-      status = `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
-    }
-
     return (
       <div className="game">
         <div className="game-board">
-          <Board squares={current.squareList} onClick={i => this.handleClick(i)} />
+          <Board squares={current.squareList} onClick={this.handleClick} />
         </div>
         <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
+          <div>{this.getStatus(winner)}</div>
+          <ol>{this.getMoves(history)}</ol>
         </div>
       </div>
     );
