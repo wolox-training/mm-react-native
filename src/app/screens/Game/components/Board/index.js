@@ -33,7 +33,11 @@ class Board extends React.Component {
 }
 
 Board.propTypes = {
-  squares: PropTypes.array,
+  squares: PropTypes.arrayOf(
+    PropTypes.shape({
+      squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string }))
+    })
+  ),
   onClick: PropTypes.func
 };
 
