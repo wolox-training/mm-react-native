@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import './styles.css';
 
-function Square(props) {
+function Square({ value, onClick }) {
   return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
+    <button className="square" onClick={onClick}>
+      {value}
     </button>
   );
 }
