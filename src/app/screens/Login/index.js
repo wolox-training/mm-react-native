@@ -11,10 +11,11 @@ import Login from './layout';
 
 class LoginContainer extends Component {
   navigateToGame = () => {
-    this.props.history.push('/game');
+    this.props.history.push('/home');
   };
 
   handleSubmit = event => {
+    if (this.props.token) this.navigateToGame();
     this.props.dispatch(loginActions.login(event, this.navigateToGame));
   };
 
@@ -25,11 +26,12 @@ class LoginContainer extends Component {
 
 LoginContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
-  invalid: PropTypes.bool
+  invalid: PropTypes.bool,
+  token: PropTypes.string
 };
 
-const mapStateToProps = store => ({
-  invalid: isInvalid('login')(store)
+const mapStateToProps = state => ({
+  invalid: isInvalid('login')(state)
 });
 
 export default connect(mapStateToProps)(withRouter(LoginContainer));

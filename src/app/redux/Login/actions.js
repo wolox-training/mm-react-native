@@ -1,13 +1,16 @@
 import UserService from '../../../services/UserService';
+import localStorageService from '../../../services/localStorageService';
+import api from '../../../config/api';
 
 export const actions = {
-  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE'
+  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS'
 };
 
 const privateActionCreators = {
   loginSuccess: (data, onSuccess) => {
+    localStorageService.setToken(data.token);
     onSuccess();
+    api.setHeaders({ token: data.token });
     return {
       type: actions.USER_LOGIN_SUCCESS,
       payload: data
