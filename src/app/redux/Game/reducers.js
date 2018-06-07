@@ -1,38 +1,30 @@
-import * as Immutable from 'seamless-immutable';
+import Immutable from 'seamless-immutable';
 
 import { editSquare } from '../../../utils/utils';
 import { lines } from '../../screens/Game/constants';
 
 import { actions } from './actions';
 
+const emptySquareList = [
+  { id: 0, value: '' },
+  { id: 1, value: '' },
+  { id: 2, value: '' },
+  { id: 3, value: '' },
+  { id: 4, value: '' },
+  { id: 5, value: '' },
+  { id: 6, value: '' },
+  { id: 7, value: '' },
+  { id: 8, value: '' }
+];
+
 const initialState = {
   stepNumber: 0,
   xIsNext: true,
   winner: '',
-  squareList: [
-    { id: 0, value: '' },
-    { id: 1, value: '' },
-    { id: 2, value: '' },
-    { id: 3, value: '' },
-    { id: 4, value: '' },
-    { id: 5, value: '' },
-    { id: 6, value: '' },
-    { id: 7, value: '' },
-    { id: 8, value: '' }
-  ],
+  squareList: emptySquareList,
   history: [
     {
-      squareList: [
-        { id: 0, value: '' },
-        { id: 1, value: '' },
-        { id: 2, value: '' },
-        { id: 3, value: '' },
-        { id: 4, value: '' },
-        { id: 5, value: '' },
-        { id: 6, value: '' },
-        { id: 7, value: '' },
-        { id: 8, value: '' }
-      ]
+      squareList: emptySquareList
     }
   ]
 };
@@ -51,7 +43,6 @@ function reducer(state = Immutable(initialState), action) {
   switch (action.type) {
     case actions.CHANGE_SQUARE_STATUS: {
       const newList = editSquare(state.squareList, action.payload.idSquare, action.payload.value);
-      if (state.winner || state.squareList[action.payload.idSquare].value) return state;
       return state.merge({
         squareList: newList,
         history: state.history.concat({ squareList: newList }),

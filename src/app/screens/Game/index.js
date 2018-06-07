@@ -26,7 +26,8 @@ class Game extends Component {
   }
 
   handleClick = index => {
-    this.props.dispatch(gameActions.changeSquareStatus(index, this.props.xIsNext ? 'X' : 'O'));
+    if (this.props && !this.props.winner && !this.props.squareList[index].value)
+      this.props.dispatch(gameActions.changeSquareStatus(index, this.props.xIsNext ? 'X' : 'O'));
   };
 
   jumpTo(step) {
@@ -53,6 +54,7 @@ class Game extends Component {
 }
 
 Game.propTypes = {
+  squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string })),
   history: PropTypes.arrayOf(
     PropTypes.shape({
       squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string }))
