@@ -6,7 +6,7 @@ import './styles.css';
 
 class Board extends Component {
   renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
+    return <Square value={this.props.squares[i].value} onClick={() => this.props.onClick(i)} />;
   }
 
   render() {
@@ -33,10 +33,13 @@ class Board extends Component {
 }
 
 Board.propTypes = {
-  squares: PropTypes.arrayOf(PropTypes.node).isRequired,
-  onClick: PropTypes.func.isRequired
+  squares: PropTypes.arrayOf(
+    PropTypes.shape({
+      squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string })),
+      value: PropTypes.string
+    })
+  ),
+  onClick: PropTypes.func
 };
 
 export default Board;
-
-/*  */
