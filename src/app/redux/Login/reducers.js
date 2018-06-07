@@ -6,7 +6,7 @@ const initialState = {};
 
 function reducer(state = Immutable(initialState), action) {
   switch (action.type) {
-    case actions.CHANGE_SQUARE_STATUS:
+    case actions.LOGIN:
       return state;
     default:
       return state;

@@ -90,6 +90,10 @@ button[type='submit'] {
   color: white;
 }
 
+button[type='submit']:disabled {
+  background-color: grey;
+}
+
 /* Validation styles */
 .valid input {
   border-color: green;

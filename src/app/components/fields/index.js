@@ -16,7 +16,12 @@ export const customInput = props => {
 
 customInput.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.string
-  // input: PropTypes.node,
-  // meta: PropTypes.node
+  type: PropTypes.string,
+  input: PropTypes.shape({
+    value: PropTypes.string
+  }),
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool
+  })
 };

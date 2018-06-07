@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { required, minLength, email } from '../../components/Validation';
@@ -19,7 +18,7 @@ function Login({ handleSubmit, disableSubmit }) {
         label="Password"
         validate={[required, minLength]}
       />
-      <button onClick={handleSubmit} disabled={disableSubmit}>
+      <button type="submit" onClick={handleSubmit} disabled={disableSubmit}>
         Login
       </button>
     </form>
