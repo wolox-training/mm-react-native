@@ -16,7 +16,7 @@ export const customInput = props => {
 
 customInput.propTypes = {
   label: PropTypes.string,
-  input: PropTypes.node,
-  type: PropTypes.string,
-  meta: PropTypes.node
+  type: PropTypes.string
+  // input: PropTypes.node,
+  // meta: PropTypes.node
 };

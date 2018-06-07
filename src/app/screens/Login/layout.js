@@ -7,9 +7,9 @@ import { required, minLength, email } from '../../components/Validation';
 import { customInput } from '../../components/fields';
 import './styles.css';
 
-function Login({ handleSubmit }) {
+function Login({ handleSubmit, formValidity }) {
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <h1> Welcome to Login </h1>
       <Field name="email" component={customInput} type="text" label="Email" validate={[required, email]} />
       <Field
@@ -19,8 +19,8 @@ function Login({ handleSubmit }) {
         label="Password"
         validate={[required, minLength]}
       />
-      <button>
-        <Link to="/game" href="/">
+      <button type="submit" onClick={handleSubmit} disable={formValidity}>
+        <Link to="/game" href="/game">
           Login
         </Link>
       </button>
@@ -29,7 +29,8 @@ function Login({ handleSubmit }) {
 }
 
 Login.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  formValidity: PropTypes.bool
 };
 
 export default reduxForm({ form: 'login' })(Login);
