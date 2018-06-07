@@ -2,18 +2,21 @@
   "users": [
     {
       "id": 1,
-      "username": "mauro@wolox.com",
-      "password": "12345678"
+      "email": "mauro@wolox.com",
+      "password": "12345678",
+      "token": "tokenmauro"
     },
     {
       "id": 2,
-      "username": "nacho@wolox.com",
-      "password": "12345678"
+      "email": "nacho@wolox.com",
+      "password": "12345678",
+      "token": "tokennacho"
     },
     {
       "id": 3,
-      "username": "frank@wolox.com",
-      "password": "12345678"
+      "email": "frank@wolox.com",
+      "password": "12345678",
+      "token": "tokenfrank"
     }
   ]
 }

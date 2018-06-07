@@ -1,40 +1,31 @@
 import UserService from '../../../services/UserService';
 
-export const actions = [
-  { GET_USERS: 'GET_USERS' },
-  { GET_USERS_SUCCESS: 'GET_USERS_SUCCESS' },
-  { GET_USERS_FAILURE: 'GET_USERS_FAILURE' },
-  { USER_LOGIN: 'USER_LOGIN' }
-];
+export const actions = {
+  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
+  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE'
+};
+
+const privateActionCreators = {
+  loginSuccess: (data, onSuccess) => {
+    onSuccess();
+    return {
+      type: actions.USER_LOGIN_SUCCESS,
+      payload: data
+    };
+  },
+  loginFailure: () => {
+    alert('Wrong email or password');
+  }
+};
 
 const actionCreators = {
-  // Es una función que devuelve una función.
-  // El middleware va a ver que cuando se haga
-  // dispatch(actionCreators.getBooks());
-  // va a encontrar que el resultado de eso es una función y
-  // lo va a invocar con `dispatch` y `getState`.
-  getUsers: () => async dispatch => {
-    dispatch({ type: actions.GET_USERS });
-    const response = await UserService.getBooks();
-    if (response.ok) {
-      dispatch({
-        type: actions.GET_USERS_SUCCESS,
-        payload: response.data
-      });
+  login: (event, onSuccess) => async dispatch => {
+    const response = await UserService.login(event);
+    if (response.data.length > 0) {
+      dispatch(privateActionCreators.loginSuccess(response.data.pop(), onSuccess));
     } else {
-      dispatch({
-        type: actions.GET_USERS_FAILURE,
-        payload: response.problem
-      });
+      privateActionCreators.loginFailure();
     }
-  },
-  login(event) {
-    return dispatch => {
-      dispatch({
-        type: actions.USER_LOGIN,
-        payload: { event }
-      });
-    };
   }
 };
 

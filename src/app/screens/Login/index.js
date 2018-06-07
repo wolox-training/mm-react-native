@@ -10,9 +10,12 @@ import loginActions from '../../redux/Login/actions';
 import Login from './layout';
 
 class LoginContainer extends Component {
-  handleSubmit = event => {
-    this.props.dispatch(loginActions.login(event));
+  navigateToGame = () => {
     this.props.history.push('/game');
+  };
+
+  handleSubmit = event => {
+    this.props.dispatch(loginActions.login(event, this.navigateToGame));
   };
 
   render() {
