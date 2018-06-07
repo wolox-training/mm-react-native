@@ -1,28 +1,23 @@
 import React, { Component } from 'react';
-import { connect } from 'redux-form';
+import { isInvalid } from 'redux-form';
+import { connect } from 'react-redux';
 
-import loginActions from '../../redux/Login/actions';
+// import loginActions from '../../redux/Login/actions';
 
 import Login from './layout';
 
 class LoginContainer extends Component {
   handleSubmit = event => {
-    return event ? loginActions.GET_USERS : null;
-  };
-
-  validateForm = event => {
-
-    console.log(event);
+    console.log(`asdasd${this.props}`);
   };
 
   render() {
-    return <Login onSubmit={this.handleSubmit} formValidity={this.formValidity} />;
+    return <Login onSubmit={this.handleSubmit} disableSubmit={this.isInvalid} />;
   }
 }
 
 const mapStateToProps = store => ({
-  email: store.form.value,
-  password: store.form.password
+  invalid: isInvalid('login')(store)
 });
 
 export default connect(mapStateToProps)(LoginContainer);

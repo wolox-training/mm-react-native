@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { required, minLength, email } from '../../components/Validation';
 import { customInput } from '../../components/fields';
 import './styles.css';
 
-function Login({ handleSubmit, formValidity }) {
+function Login({ handleSubmit, disableSubmit }) {
   return (
     <form>
       <h1> Welcome to Login </h1>
@@ -19,10 +19,8 @@ function Login({ handleSubmit, formValidity }) {
         label="Password"
         validate={[required, minLength]}
       />
-      <button type="submit" onClick={handleSubmit} disable={formValidity}>
-        <Link to="/game" href="/game">
-          Login
-        </Link>
+      <button onClick={handleSubmit} disabled={disableSubmit}>
+        Login
       </button>
     </form>
   );
@@ -30,7 +28,7 @@ function Login({ handleSubmit, formValidity }) {
 
 Login.propTypes = {
   handleSubmit: PropTypes.func,
-  formValidity: PropTypes.bool
+  disableSubmit: PropTypes.bool
 };
 
 export default reduxForm({ form: 'login' })(Login);
