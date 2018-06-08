@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import { required, minLength, email } from '../../components/Validation';
 import { customInput } from '../../components/fields';
+import withLoading from '../WithLoading';
 import './styles.css';
 
 function Login({ handleSubmit, disableSubmit }) {
@@ -30,4 +31,4 @@ Login.propTypes = {
   disableSubmit: PropTypes.bool
 };
 
-export default reduxForm({ form: 'login' })(Login);
+export default reduxForm({ form: 'login' })(withLoading(Login));

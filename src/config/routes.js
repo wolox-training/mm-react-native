@@ -33,8 +33,9 @@ function AppRoutes() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route path="/home" component={Layout} />
+        <Route path="/login" component={Login} />
+        <Route exact path="/home" component={Layout} />
+        <Redirect from="/" to="/home" />
       </Switch>
     </Router>
   );
