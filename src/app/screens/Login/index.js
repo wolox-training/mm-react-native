@@ -20,17 +20,25 @@ class LoginContainer extends Component {
   };
 
   render() {
-    return <Login onSubmit={this.handleSubmit} disableSubmit={this.props.invalid} />;
+    return (
+      <Login
+        onSubmit={this.handleSubmit}
+        disableSubmit={this.props.invalid}
+        isLoading={this.props.isLoading}
+      />
+    );
   }
 }
 
 LoginContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   invalid: PropTypes.bool,
-  token: PropTypes.string
+  token: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
+  isLoading: state.login.isLoading,
   invalid: isInvalid('login')(state)
 });
 

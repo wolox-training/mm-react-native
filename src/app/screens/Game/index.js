@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 
 import gameActions from '../../redux/Game/actions';
 
-import Board from './components/Board';
+import Game from './layout';
 import './styles.css';
 
 /* eslint-disable react/no-array-index-key */
 
-class Game extends Component {
+class GameContainer extends Component {
   getStatus(winner) {
     return winner ? `Winner: ${winner}` : `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
   }
@@ -40,20 +40,17 @@ class Game extends Component {
     const { winner } = this.props;
 
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board squares={current.squareList} onClick={this.handleClick} />
-        </div>
-        <div className="game-info">
-          <div>{this.getStatus(winner)}</div>
-          <ol>{this.getMoves(history)}</ol>
-        </div>
-      </div>
+      <Game
+        squareList={current.squareList}
+        getStatus={this.getStatus(winner)}
+        getMoves={this.getMoves(history)}
+        handleClick={this.handleClick}
+      />
     );
   }
 }
 
-Game.propTypes = {
+GameContainer.propTypes = {
   squareList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, value: PropTypes.string })),
   history: PropTypes.arrayOf(
     PropTypes.shape({
@@ -73,4 +70,4 @@ const mapStateToProps = state => ({
   winner: state.game.winner
 });
 
-export default connect(mapStateToProps)(Game);
+export default connect(mapStateToProps)(GameContainer);
