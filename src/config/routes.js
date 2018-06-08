@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Login from '../app/screens/Login';
+import Home from '../app/screens/Home';
 import Game from '../app/screens/Game';
 import localStorageService from '../services/localStorageService';
+import Topbar from '../app/screens/Topbar';
 
 import api from './api';
 
@@ -21,11 +23,13 @@ function Layout() {
     return <Redirect to="/login" />;
   }
   return (
-    <Router>
+    <Fragment>
+      <Topbar />
       <Switch>
-        <Route exact path="/home" component={Game} />
+        <Route path="/home" component={Home} />
+        <Route path="/game" component={Game} />
       </Switch>
-    </Router>
+    </Fragment>
   );
 }
 
@@ -34,7 +38,8 @@ function AppRoutes() {
     <Router>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route exact path="/home" component={Layout} />
+        <Route path="/home" component={Layout} />
+        <Route path="/game" component={Layout} />
         <Redirect from="/" to="/home" />
       </Switch>
     </Router>

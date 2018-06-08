@@ -1,0 +1,22 @@
+.topbar {
+  height: 50px;
+  width: 100%;
+  border-bottom: 3px solid black;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.link {
+  margin: 30px 30px;
+}
+
+.logout {
+  margin-left: auto;
+}
+
+.logout-button {
+  background-color: #e7e7e7;
+  border-radius: 8px;
+  margin: 30px 30px;
+}

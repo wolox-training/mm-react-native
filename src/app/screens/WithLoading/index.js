@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './styles.css';
+
 function withLoading(WrappedComponent) {
   return function LoadingComponent(props) {
     LoadingComponent.propTypes = {
@@ -8,7 +10,7 @@ function withLoading(WrappedComponent) {
     };
 
     if (!props.isLoading) return <WrappedComponent {...props} />;
-    return <p>Loading, please wait...</p>;
+    return <h1 className="loading">Loading, please wait...</h1>;
   };
 }
 

@@ -12,7 +12,7 @@ function Game({ squareList, getStatus, getMoves, handleClick }) {
       </div>
       <div className="game-info">
         <div>{getStatus}</div>
-        <ol>{getMoves}</ol>
+        <ol className="move">{getMoves}</ol>
       </div>
     </div>
   );

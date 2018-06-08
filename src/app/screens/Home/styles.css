@@ -1,0 +1,33 @@
+.body {
+  margin: 0 75px;
+}
+
+.react {
+    display: grid;
+    grid-template-rows: 120px 250px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.title {
+  grid-column: 1/4;
+  grid-row: 1/2;
+  width: 100%;
+}
+
+.react-logo {
+  height: 200px;
+  width: 200px;
+}
+
+.react-desc {
+  grid-column: 2/4;
+}
+
+.libraries {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.library {
+  margin: 10px 15px;
+}

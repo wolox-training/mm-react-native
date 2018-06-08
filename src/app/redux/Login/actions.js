@@ -4,7 +4,8 @@ import api from '../../../config/api';
 
 export const actions = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-  USER_LOGIN_LOADING: 'USER_LOGIN_LOADING'
+  USER_LOGIN_LOADING: 'USER_LOGIN_LOADING',
+  USER_LOGIN_ERROR: 'USER_LOGIN_ERROR'
 };
 
 const privateActionCreators = {
@@ -19,6 +20,7 @@ const privateActionCreators = {
   },
   loginFailure: () => {
     alert('Wrong email or password');
+    return { type: actions.USER_LOGIN_ERROR };
   }
 };
 
@@ -31,7 +33,7 @@ const actionCreators = {
     if (response.data.length > 0) {
       dispatch(privateActionCreators.loginSuccess(response.data.pop(), onSuccess));
     } else {
-      privateActionCreators.loginFailure();
+      dispatch(privateActionCreators.loginFailure());
     }
   }
 };
