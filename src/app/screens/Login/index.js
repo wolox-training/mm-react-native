@@ -6,17 +6,19 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 
 import loginActions from '../../redux/Login/actions';
+import { ROUTES } from '../../../constants/routes';
+import { LOGINFIELDS } from '../../../constants/loginFields';
 
 import Login from './layout';
 
 class LoginContainer extends Component {
   navigateToGame = () => {
-    this.props.history.push('/home');
+    this.props.history.push(ROUTES.HOME);
   };
 
   handleSubmit = event => {
     if (this.props.token) this.navigateToGame();
-    this.props.dispatch(loginActions.login(event, this.navigateToGame));
+    this.props.dispatch(loginActions.login(event.email, event.password, this.navigateToGame));
   };
 
   render() {
@@ -39,7 +41,7 @@ LoginContainer.propTypes = {
 
 const mapStateToProps = state => ({
   isLoading: state.login.isLoading,
-  invalid: isInvalid('login')(state)
+  invalid: isInvalid(LOGINFIELDS.FORM_NAME)(state)
 });
 
 export default connect(mapStateToProps)(withRouter(LoginContainer));

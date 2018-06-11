@@ -26,11 +26,11 @@ const privateActionCreators = {
 };
 
 const actionCreators = {
-  login: (event, onSuccess) => async dispatch => {
+  login: (email, password, onSuccess) => async dispatch => {
     dispatch({
       type: actions.USER_LOGIN_LOADING
     });
-    const response = await UserService.login(event);
+    const response = await UserService.login(email, password);
     if (response.data.length > 0) {
       dispatch(privateActionCreators.loginSuccess(response.data.pop(), onSuccess));
     } else {

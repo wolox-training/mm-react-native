@@ -1,7 +1,7 @@
 import Immutable from 'seamless-immutable';
 
 import { editSquare } from '../../../utils/utils';
-import { lines } from '../../screens/Game/constants';
+import { lines } from '../../../constants/gameLines';
 import { actions as loginActions } from '../Login/actions';
 
 import { actions } from './actions';

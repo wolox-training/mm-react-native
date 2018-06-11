@@ -6,6 +6,7 @@ import Home from '../app/screens/Home';
 import Game from '../app/screens/Game';
 import localStorageService from '../services/localStorageService';
 import Topbar from '../app/screens/Topbar';
+import { ROUTES } from '../constants/routes';
 
 import api from './api';
 
@@ -20,14 +21,14 @@ function isLoggedIn() {
 
 function Layout() {
   if (!isLoggedIn()) {
-    return <Redirect to="/login" />;
+    return <Redirect to={ROUTES.LOGIN} />;
   }
   return (
     <Fragment>
       <Topbar />
       <Switch>
-        <Route path="/home" component={Home} />
-        <Route path="/game" component={Game} />
+        <Route path={ROUTES.HOME} component={Home} />
+        <Route path={ROUTES.GAME} component={Game} />
       </Switch>
     </Fragment>
   );
@@ -37,10 +38,10 @@ function AppRoutes() {
   return (
     <Router>
       <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/home" component={Layout} />
-        <Route path="/game" component={Layout} />
-        <Redirect from="/" to="/home" />
+        <Route path={ROUTES.LOGIN} component={Login} />
+        <Route path={ROUTES.HOME} component={Layout} />
+        <Route path={ROUTES.GAME} component={Layout} />
+        <Redirect from="/" to={ROUTES.HOME} />
       </Switch>
     </Router>
   );

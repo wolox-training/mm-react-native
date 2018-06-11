@@ -3,23 +3,33 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 
 import { required, minLength, email } from '../../components/Validation';
-import { customInput } from '../../components/fields';
+import CustomInput from '../../components/CustomInput';
 import withLoading from '../WithLoading';
+import { LOGINFIELDS } from '../../../constants/loginFields';
+
+import { strings } from './strings';
+
 import './styles.css';
 
 function Login({ handleSubmit, disableSubmit }) {
   return (
     <form>
-      <h1> Welcome to Login </h1>
-      <Field name="email" component={customInput} type="text" label="Email" validate={[required, email]} />
+      <h1> {strings.welcome} </h1>
       <Field
-        name="password"
-        component={customInput}
-        type="password"
-        label="Password"
+        name={LOGINFIELDS.EMAIL}
+        component={CustomInput}
+        type={strings.type_email}
+        label={strings.email}
+        validate={[required, email]}
+      />
+      <Field
+        name={LOGINFIELDS.password}
+        component={CustomInput}
+        type={strings.type_password}
+        label={strings.password}
         validate={[required, minLength]}
       />
-      <button type="submit" onClick={handleSubmit} disabled={disableSubmit}>
+      <button type={strings.submit} onClick={handleSubmit} disabled={disableSubmit}>
         Login
       </button>
     </form>
@@ -27,8 +37,8 @@ function Login({ handleSubmit, disableSubmit }) {
 }
 
 Login.propTypes = {
-  handleSubmit: PropTypes.func,
+  handleSubmit: PropTypes.func.isRequired,
   disableSubmit: PropTypes.bool
 };
 
-export default reduxForm({ form: 'login' })(withLoading(Login));
+export default reduxForm({ form: LOGINFIELDS.FORM_NAME })(withLoading(Login));

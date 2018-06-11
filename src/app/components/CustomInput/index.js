@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const customInput = props => {
+function CustomInput(props) {
   const { meta } = props;
   return (
     <div>
@@ -12,9 +12,9 @@ export const customInput = props => {
       {meta.error && meta.touched && <div style={{ color: 'red' }}>{meta.error}</div>}
     </div>
   );
-};
+}
 
-customInput.propTypes = {
+CustomInput.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
   input: PropTypes.shape({
@@ -25,3 +25,5 @@ customInput.propTypes = {
     touched: PropTypes.bool
   })
 };
+
+export default CustomInput;
