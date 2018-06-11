@@ -12,11 +12,10 @@ function reducer(state = Immutable(initialState), action) {
       return state.merge({ isLoading: true });
     case actions.USER_LOGIN_SUCCESS: {
       return state.merge({
-        token: action.payload.token,
         isLoading: false
       });
     }
-    case actions.USER_LOGIN_ERROR: {
+    case actions.USER_LOGIN_FAILURE: {
       return state.merge({ isLoading: false });
     }
     case actions.USER_LOGOUT: {

@@ -3,7 +3,7 @@ import UserService from '../../../services/UserService';
 export const actions = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
   USER_LOGIN_LOADING: 'USER_LOGIN_LOADING',
-  USER_LOGIN_ERROR: 'USER_LOGIN_ERROR',
+  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
   USER_LOGOUT: 'USER_LOGOUT'
 };
 
@@ -17,7 +17,7 @@ const privateActionCreators = {
   },
   loginFailure: alertLoginError => {
     alertLoginError();
-    return { type: actions.USER_LOGIN_ERROR };
+    return { type: actions.USER_LOGIN_FAILURE };
   }
 };
 
