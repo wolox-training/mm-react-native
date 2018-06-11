@@ -4,7 +4,9 @@ import { connect } from 'react-redux';
 
 import localStorageService from '../../../services/localStorageService';
 import loginActions from '../../redux/Login/actions';
+import { ROUTES } from '../../../constants/routes';
 
+import { strings } from './strings.js';
 import './styles.css';
 
 class Topbar extends Component {
@@ -16,15 +18,15 @@ class Topbar extends Component {
   render() {
     return (
       <nav className="topbar">
-        <Link to="/home" href="/home" className="link">
-          Home
+        <Link to={ROUTES.HOME} href={ROUTES.HOME} className="link">
+          {strings.home}
         </Link>
-        <Link to="/game" href="/game" className="link">
-          Game
+        <Link to={ROUTES.GAME} href={ROUTES.GAME} className="link">
+          {strings.game}
         </Link>
-        <Link href="login" to="login" className="logout">
+        <Link href={ROUTES.LOGIN} to={ROUTES.LOGIN} className="logout">
           <button className="logout-button" onClick={this.logOut}>
-            Log Out
+            {strings.logout}
           </button>
         </Link>
       </nav>
@@ -32,6 +34,6 @@ class Topbar extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 export default connect(mapStateToProps)(Topbar);
