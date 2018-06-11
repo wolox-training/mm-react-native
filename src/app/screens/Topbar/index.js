@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import localStorageService from '../../../services/localStorageService';
+import loginActions from '../../redux/Login/actions';
 
 import './styles.css';
 
 class Topbar extends Component {
   logOut = () => {
     localStorageService.removeToken();
+    this.props.dispatch(loginActions.logout());
   };
 
   render() {
@@ -29,4 +32,6 @@ class Topbar extends Component {
   }
 }
 
-export default Topbar;
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps)(Topbar);

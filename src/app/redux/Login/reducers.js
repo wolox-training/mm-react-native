@@ -19,6 +19,9 @@ function reducer(state = Immutable(initialState), action) {
     case actions.USER_LOGIN_ERROR: {
       return state.merge({ isLoading: false });
     }
+    case actions.USER_LOGOUT: {
+      return state.merge(initialState);
+    }
     default:
       return state;
   }

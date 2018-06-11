@@ -5,7 +5,8 @@ import api from '../../../config/api';
 export const actions = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
   USER_LOGIN_LOADING: 'USER_LOGIN_LOADING',
-  USER_LOGIN_ERROR: 'USER_LOGIN_ERROR'
+  USER_LOGIN_ERROR: 'USER_LOGIN_ERROR',
+  USER_LOGOUT: 'USER_LOGOUT'
 };
 
 const privateActionCreators = {
@@ -35,6 +36,9 @@ const actionCreators = {
     } else {
       dispatch(privateActionCreators.loginFailure());
     }
+  },
+  logout: () => dispatch => {
+    dispatch({ type: actions.USER_LOGOUT });
   }
 };
 
