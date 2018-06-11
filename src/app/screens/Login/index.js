@@ -10,15 +10,22 @@ import { ROUTES } from '../../../constants/routes';
 import { LOGINFIELDS } from '../../../constants/loginFields';
 
 import Login from './layout';
+import { strings } from './strings';
 
 class LoginContainer extends Component {
   navigateToGame = () => {
     this.props.history.push(ROUTES.HOME);
   };
 
+  alertLoginError = () => {
+    alert(strings.login_error);
+  };
+
   handleSubmit = event => {
     if (this.props.token) this.navigateToGame();
-    this.props.dispatch(loginActions.login(event.email, event.password, this.navigateToGame));
+    this.props.dispatch(
+      loginActions.login(event.email, event.password, this.navigateToGame, this.alertLoginError)
+    );
   };
 
   render() {

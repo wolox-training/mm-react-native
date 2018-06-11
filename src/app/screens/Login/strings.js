@@ -4,5 +4,6 @@ export const strings = {
   email: 'Email',
   type_email: 'email',
   type_password: 'password',
-  submit: 'submit'
+  submit: 'submit',
+  login_error: 'Wrong email or password'
 };

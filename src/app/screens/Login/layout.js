@@ -23,7 +23,7 @@ function Login({ handleSubmit, disableSubmit }) {
         validate={[required, email]}
       />
       <Field
-        name={LOGINFIELDS.password}
+        name={LOGINFIELDS.PASSWORD}
         component={CustomInput}
         type={strings.type_password}
         label={strings.password}

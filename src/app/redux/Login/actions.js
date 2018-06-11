@@ -1,6 +1,4 @@
 import UserService from '../../../services/UserService';
-import localStorageService from '../../../services/localStorageService';
-import api from '../../../config/api';
 
 export const actions = {
   USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
@@ -11,30 +9,28 @@ export const actions = {
 
 const privateActionCreators = {
   loginSuccess: (data, onSuccess) => {
-    localStorageService.setToken(data.token);
     onSuccess();
-    api.setHeaders({ token: data.token });
     return {
       type: actions.USER_LOGIN_SUCCESS,
       payload: data
     };
   },
-  loginFailure: () => {
-    alert('Wrong email or password');
+  loginFailure: alertLoginError => {
+    alertLoginError();
     return { type: actions.USER_LOGIN_ERROR };
   }
 };
 
 const actionCreators = {
-  login: (email, password, onSuccess) => async dispatch => {
+  login: (email, password, onSuccess, alertLoginError) => async dispatch => {
     dispatch({
       type: actions.USER_LOGIN_LOADING
     });
     const response = await UserService.login(email, password);
-    if (response.data.length > 0) {
+    if (response.ok && response.data.length > 0) {
       dispatch(privateActionCreators.loginSuccess(response.data.pop(), onSuccess));
     } else {
-      dispatch(privateActionCreators.loginFailure());
+      dispatch(privateActionCreators.loginFailure(alertLoginError));
     }
   },
   logout: () => dispatch => {
