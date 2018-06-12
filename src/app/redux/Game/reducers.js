@@ -1,7 +1,8 @@
 import Immutable from 'seamless-immutable';
 
 import { editSquare } from '../../../utils/utils';
-import { lines } from '../../screens/Game/constants';
+import { lines } from '../../../constants/gameLines';
+import { actions as loginActions } from '../Login/actions';
 
 import { actions } from './actions';
 
@@ -56,6 +57,9 @@ function reducer(state = Immutable(initialState), action) {
         stepNumber: action.payload.step,
         xIsNext: action.payload.step % 2 === 0
       });
+    case loginActions.USER_LOGOUT: {
+      return state.merge(initialState);
+    }
     default:
       return state;
   }

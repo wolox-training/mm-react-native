@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
-import Game from './app/screens/Game';
 import store from './app/redux/store';
+import App from './config/routes';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Game />
+    <App />
   </Provider>,
   document.getElementById('root')
 );
 
-registerServiceWorker();
+// registerServiceWorker();

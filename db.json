@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "mauro@wolox.com",
+      "password": "12345678",
+      "token": "tokenmauro"
+    },
+    {
+      "id": 2,
+      "email": "nacho@wolox.com",
+      "password": "12345678",
+      "token": "tokennacho"
+    },
+    {
+      "id": 3,
+      "email": "frank@wolox.com",
+      "password": "12345678",
+      "token": "tokenfrank"
+    }
+  ]
+}

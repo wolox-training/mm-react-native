@@ -1,8 +1,15 @@
 .game {
   display: flex;
   flex-direction: row;
+  margin: 50px 50px;
 }
 
 .game-info {
   margin-left: 20px;
+}
+
+.move {
+  background-color: #e7e7e7;
+  border-radius: 8px;
+  margin: 30px 30px;
 }
