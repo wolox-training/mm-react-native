@@ -35,6 +35,7 @@ const actionCreators = {
   },
   logout: () => dispatch => {
     dispatch({ type: actions.USER_LOGOUT });
+    UserService.logout();
   }
 };
 

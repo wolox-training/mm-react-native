@@ -11,5 +11,6 @@ export default {
       api.setHeaders({ token: response.data.token });
     }
     return response;
-  }
+  },
+  logout: () => localStorageService.removeToken()
 };
