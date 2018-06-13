@@ -13,7 +13,7 @@ const TabNavigator = createTabNavigator(
     book: Book
   },
   {
-    initialRouteName: ROUTES.todo
+    initialRouteName: ROUTES.book
   }
 );
 
