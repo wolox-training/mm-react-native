@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
+import { ROUTES } from '../../../constants/routes';
+
 import Todo from './layout';
 
 class TodoContainer extends Component {
+  static navigationOptions = {
+    title: ROUTES.todoTitle
+  };
+
   state = {
     items: [],
     inputValue: ''
