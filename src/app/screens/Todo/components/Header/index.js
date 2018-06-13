@@ -15,9 +15,9 @@ function Header({ inputValue, onAddItem, onChange }) {
         value={inputValue}
         onChangeText={onChange}
         onSubmitEditing={onAddItem}
-        placeholder="Enter an Item!"
+        placeholder={strings.enterItem}
         blurOnSubmit={false}
-        returnKeyType="done"
+        returnKeyType={strings.done}
         style={styles.input}
       />
     </View>
@@ -25,8 +25,8 @@ function Header({ inputValue, onAddItem, onChange }) {
 }
 
 Header.propTypes = {
-  onChange: PropTypes.func,
-  onAddItem: PropTypes.func,
+  onChange: PropTypes.func.isRequired,
+  onAddItem: PropTypes.func.isRequired,
   inputValue: PropTypes.string
 };
 

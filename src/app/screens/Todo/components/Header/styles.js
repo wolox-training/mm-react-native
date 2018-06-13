@@ -1,15 +1,17 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from '../../../../../constants/colors';
+
 const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
     alignSelf: 'stretch',
-    backgroundColor: 'skyblue',
+    backgroundColor: COLORS.skyblue,
     height: 50,
     justifyContent: 'center'
   },
   headerText: {
-    color: 'white',
+    color: COLORS.white,
     fontSize: 15
   },
   input: {

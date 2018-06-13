@@ -16,7 +16,7 @@ function Footer({ onClearComplete }) {
 }
 
 Footer.propTypes = {
-  onClearComplete: PropTypes.func
+  onClearComplete: PropTypes.func.isRequired
 };
 
 export default Footer;
