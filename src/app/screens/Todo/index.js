@@ -39,13 +39,9 @@ class TodoContainer extends Component {
   };
 
   handleToggleComplete = (rowNumber, complete) => {
-    const newItems = this.state.items.map(item => {
-      if (item.rowNumber !== rowNumber) return item;
-      return {
-        ...item,
-        complete
-      };
-    });
+    const newItems = this.state.items.map(
+      item => (item.rowNumber !== rowNumber ? item : { ...item, complete })
+    );
     this.setState({
       items: newItems
     });

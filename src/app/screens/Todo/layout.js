@@ -44,11 +44,11 @@ class Todo extends Component {
 }
 
 Todo.propTypes = {
-  handleAddItem: PropTypes.func,
-  handleRemoveItem: PropTypes.func,
-  handleClearComplete: PropTypes.func,
-  handleToggleComplete: PropTypes.func,
-  handleInputChange: PropTypes.func,
+  handleAddItem: PropTypes.func.isRequired,
+  handleRemoveItem: PropTypes.func.isRequired,
+  handleClearComplete: PropTypes.func.isRequired,
+  handleToggleComplete: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
   inputValue: PropTypes.string,
   items: PropTypes.arrayOf(
     PropTypes.shape({ rowNumber: PropTypes.string, text: PropTypes.string, complete: PropTypes.bool })

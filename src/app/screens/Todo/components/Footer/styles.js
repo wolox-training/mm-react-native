@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from '../../../../../constants/colors';
+
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
@@ -8,7 +10,7 @@ const styles = StyleSheet.create({
   },
   removeButton: {
     alignSelf: 'stretch',
-    color: 'red'
+    color: COLORS.red
   }
 });
 
