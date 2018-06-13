@@ -1,5 +1,5 @@
 export const ROUTES = {
-  todo: 'todo',
-  book: 'book',
-  home: 'home'
+  Todo: 'todo',
+  Book: 'book',
+  Home: 'home'
 };

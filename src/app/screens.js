@@ -1,21 +1,39 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, TabNavigator } from 'react-navigation';
 
 import { ROUTES } from '../constants/routes';
 import { TITLES } from '../constants/titles';
 
+import Todo from './screens/Todo';
+import Book from './screens/Book';
 import { headerStyle, headerTitleStyle } from './screens/Home/styles';
-import Home from './screens/Home';
 
-const RootStack = createStackNavigator({
-  [ROUTES.Home]: {
-    screen: Home,
-    navigationOptions: {
+const RootStack = createStackNavigator(
+  {
+    [ROUTES.Home]: {
+      screen: TabNavigator({
+        [ROUTES.Todo]: {
+          screen: Todo,
+          navigationOptions: {
+            title: TITLES.todoTitle
+          }
+        },
+        [ROUTES.Book]: {
+          screen: Book,
+          navigationOptions: {
+            title: TITLES.bookTitle
+          }
+        }
+      })
+    }
+  },
+  {
+    navigationOptions: () => ({
       title: TITLES.applicationTitle,
-      initialRouteName: ROUTES.home,
+      initialRouteName: ROUTES.Home,
       headerStyle,
       headerTitleStyle
-    }
+    })
   }
-});
+);
 
 export default RootStack;
