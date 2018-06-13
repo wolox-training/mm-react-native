@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ListView, Keyboard } from 'react-native';
+import { View, FlatList, Keyboard } from 'react-native';
 import PropTypes from 'prop-types';
 
 import Header from './components/Header';
@@ -12,27 +12,29 @@ class Todo extends Component {
     Keyboard.dismiss();
   };
 
-  renderRow = ({ rowNumber, ...value }) => (
+  keyExtractor = item => item.rowNumber;
+
+  renderRow = ({ item }) => (
     <Row
-      rowNumber={rowNumber}
+      rowNumber={item.rowNumber}
       onRemove={this.props.handleRemoveItem}
       onComplete={this.props.handleToggleComplete}
-      {...value}
+      {...item}
     />
   );
 
   render() {
-    const { handleAddItem, handleClearComplete, handleInputChange, inputValue, dataSource } = this.props;
+    const { handleAddItem, handleClearComplete, handleInputChange, inputValue, items } = this.props;
     return (
       <View style={styles.container}>
         <Header inputValue={inputValue} onAddItem={handleAddItem} onChange={handleInputChange} />
         <View style={styles.content}>
-          <ListView
+          <FlatList
             style={styles.list}
-            enableEmptySections
-            dataSource={dataSource}
-            onScroll={this.dismissKeyboard}
-            renderRow={this.renderRow}
+            data={items}
+            keyExtractor={this.keyExtractor}
+            renderItem={this.renderRow}
+            onScrollBeginDrag={this.dismissKeyboard}
           />
         </View>
         <Footer onClearComplete={handleClearComplete} />
@@ -47,7 +49,10 @@ Todo.propTypes = {
   handleClearComplete: PropTypes.func,
   handleToggleComplete: PropTypes.func,
   handleInputChange: PropTypes.func,
-  inputValue: PropTypes.string
+  inputValue: PropTypes.string,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({ rowNumber: PropTypes.string, text: PropTypes.string, complete: PropTypes.bool })
+  )
 };
 
 export default Todo;

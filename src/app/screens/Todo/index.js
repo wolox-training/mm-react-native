@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
 
 import Todo from './layout';
 
 class TodoContainer extends Component {
   state = {
     items: [],
-    inputValue: '',
-    dataSource: new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-  };
-
-  setSource = (items, otherState = {}) => {
-    this.setState({
-      items,
-      dataSource: this.state.dataSource.cloneWithRows(items),
-      ...otherState
-    });
+    inputValue: ''
   };
 
   handleAddItem = () => {
@@ -28,17 +18,24 @@ class TodoContainer extends Component {
         complete: false
       }
     ];
-    this.setSource(newItems, { inputValue: '' });
+    this.setState({
+      items: newItems,
+      inputValue: ''
+    });
   };
 
   handleRemoveItem = rowNumber => {
     const newItems = this.state.items.filter(item => item.rowNumber !== rowNumber);
-    this.setSource(newItems);
+    this.setState({
+      items: newItems
+    });
   };
 
   handleClearComplete = () => {
     const newItems = this.state.items.filter(item => item.complete !== true);
-    this.setSource(newItems);
+    this.setState({
+      items: newItems
+    });
   };
 
   handleToggleComplete = (rowNumber, complete) => {
@@ -49,7 +46,9 @@ class TodoContainer extends Component {
         complete
       };
     });
-    this.setSource(newItems);
+    this.setState({
+      items: newItems
+    });
   };
 
   handleInputChange = inputValue => {
@@ -65,7 +64,7 @@ class TodoContainer extends Component {
         handleToggleComplete={this.handleToggleComplete}
         handleInputChange={this.handleInputChange}
         inputValue={this.state.inputValue}
-        dataSource={this.state.dataSource}
+        items={this.state.items}
       />
     );
   }
