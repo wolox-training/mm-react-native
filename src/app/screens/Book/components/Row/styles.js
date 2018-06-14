@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+const IMAGE_SIZE = 60;
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -10,8 +12,8 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: 100,
-    height: 60,
-    width: 60
+    height: IMAGE_SIZE,
+    width: IMAGE_SIZE
   },
   text: {
     flexDirection: 'column'
