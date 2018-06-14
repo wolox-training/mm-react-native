@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import { COLORS } from '../../../../../constants/colors';
+
 const styles = StyleSheet.create({
   container: {
     padding: 10,
@@ -12,15 +14,15 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   complete: {
-    backgroundColor: 'lightgrey'
+    backgroundColor: COLORS.lightgrey
   },
   text: {
     fontSize: 20,
-    color: 'black'
+    color: COLORS.black
   },
   destroy: {
     fontSize: 20,
-    color: 'red',
+    color: COLORS.red,
     marginLeft: 5
   }
 });

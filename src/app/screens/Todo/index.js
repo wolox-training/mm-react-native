@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 
-import { ROUTES } from '../../../constants/routes';
-
 import Todo from './layout';
 
 class TodoContainer extends Component {
-  static navigationOptions = {
-    title: ROUTES.todoTitle
-  };
-
   state = {
     items: [],
     inputValue: ''
@@ -45,13 +39,9 @@ class TodoContainer extends Component {
   };
 
   handleToggleComplete = (rowNumber, complete) => {
-    const newItems = this.state.items.map(item => {
-      if (item.rowNumber !== rowNumber) return item;
-      return {
-        ...item,
-        complete
-      };
-    });
+    const newItems = this.state.items.map(
+      item => (item.rowNumber !== rowNumber ? item : { ...item, complete })
+    );
     this.setState({
       items: newItems
     });

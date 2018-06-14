@@ -32,9 +32,9 @@ class Row extends Component {
 
 Row.propTypes = {
   complete: PropTypes.bool,
-  onComplete: PropTypes.func,
+  onComplete: PropTypes.func.isRequired,
   text: PropTypes.string,
-  onRemove: PropTypes.func,
+  onRemove: PropTypes.func.isRequired,
   rowNumber: PropTypes.string
 };
 
