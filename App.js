@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import Todo from './src/app/screens/Todo';
+import RootStack from './src/app/screens';
 
 class App extends Component {
   render() {
-    return <Todo />;
+    return <RootStack />;
   }
 }
 
