@@ -2,10 +2,10 @@ import { createStackNavigator, TabNavigator } from 'react-navigation';
 
 import { ROUTES } from '../constants/routes';
 import { TITLES } from '../constants/titles';
+import { headerStyle, headerTitleStyle } from '../config/navigationStyles';
 
 import Todo from './screens/Todo';
 import Book from './screens/Book';
-import { headerStyle, headerTitleStyle } from './screens/Home/styles';
 
 const RootStack = createStackNavigator(
   {
