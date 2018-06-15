@@ -1,29 +1,24 @@
+import { completeState, createReducer, completeReducer } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
+
+import userService from '../../../services/UserService';
 
 import { actions } from './actions';
 
-const initialState = {
+const stateDescription = {
   isLoading: false
 };
 
-function reducer(state = Immutable(initialState), action) {
-  switch (action.type) {
-    case actions.USER_LOGIN_LOADING:
-      return state.merge({ isLoading: true });
-    case actions.USER_LOGIN_SUCCESS: {
-      return state.merge({
-        isLoading: false
-      });
-    }
-    case actions.USER_LOGIN_FAILURE: {
-      return state.merge({ isLoading: false });
-    }
-    case actions.USER_LOGOUT: {
+const initialState = completeState(stateDescription);
+
+const reducerDescription = {
+  primaryActions: [actions.USER_LOGIN],
+  override: {
+    [actions.USER_LOGOUT]: state => {
+      userService.logout();
       return state.merge(initialState);
     }
-    default:
-      return state;
   }
-}
+};
 
-export default reducer;
+export default createReducer(Immutable(initialState), completeReducer(reducerDescription));

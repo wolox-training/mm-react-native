@@ -1,42 +1,22 @@
-import UserService from '../../../services/UserService';
+import { createTypes, completeTypes, withFlowDetermination } from 'redux-recompose';
 
-export const actions = {
-  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-  USER_LOGIN_LOADING: 'USER_LOGIN_LOADING',
-  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
-  USER_LOGOUT: 'USER_LOGOUT'
-};
+import userService from '../../../services/UserService';
 
-const privateActionCreators = {
-  loginSuccess: (data, onSuccess) => {
-    onSuccess();
-    return {
-      type: actions.USER_LOGIN_SUCCESS,
-      payload: data
-    };
-  },
-  loginFailure: alertLoginError => {
-    alertLoginError();
-    return { type: actions.USER_LOGIN_FAILURE };
-  }
-};
+export const actions = createTypes(completeTypes(['USER_LOGIN'], ['USER_LOGOUT']), '@@LOGIN');
 
 const actionCreators = {
-  login: (email, password, onSuccess, alertLoginError) => async dispatch => {
-    dispatch({
-      type: actions.USER_LOGIN_LOADING
-    });
-    const response = await UserService.login(email, password);
-    if (response.ok && response.data.length > 0) {
-      dispatch(privateActionCreators.loginSuccess(response.data.pop(), onSuccess));
-    } else {
-      dispatch(privateActionCreators.loginFailure(alertLoginError));
-    }
-  },
-  logout: () => dispatch => {
-    dispatch({ type: actions.USER_LOGOUT });
-    UserService.logout();
-  }
+  login: (email, password, onSuccess, alertLoginError) => ({
+    type: actions.USER_LOGIN,
+    service: userService.login,
+    target: 'user',
+    payload: { email, password },
+    injections: [
+      withFlowDetermination(response => (response.data.length > 0 ? onSuccess() : alertLoginError()))
+    ]
+  }),
+  logout: () => ({
+    type: actions.USER_LOGOUT
+  })
 };
 
 export default actionCreators;

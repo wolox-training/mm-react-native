@@ -1,8 +1,9 @@
+import { completeState, createReducer } from 'redux-recompose';
 import Immutable from 'seamless-immutable';
 
-import { editSquare } from '../../../utils/utils';
-import { lines } from '../../../constants/gameLines';
 import { actions as loginActions } from '../Login/actions';
+import { lines } from '../../../constants/gameLines';
+import { editSquare } from '../../../utils/utils';
 
 import { actions } from './actions';
 
@@ -18,7 +19,7 @@ const emptySquareList = [
   { id: 8, value: '' }
 ];
 
-const initialState = {
+const stateDescription = {
   stepNumber: 0,
   xIsNext: true,
   winner: '',
@@ -40,29 +41,25 @@ function calculateWinner(squares) {
   return null;
 }
 
-function reducer(state = Immutable(initialState), action) {
-  switch (action.type) {
-    case actions.CHANGE_SQUARE_STATUS: {
-      const newList = editSquare(state.squareList, action.payload.idSquare, action.payload.value);
-      return state.merge({
-        squareList: newList,
-        history: state.history.concat({ squareList: newList }),
-        stepNumber: state.history.length,
-        xIsNext: !state.xIsNext,
-        winner: calculateWinner(newList)
-      });
-    }
-    case actions.JUMP_TO_STEP:
-      return state.merge({
-        stepNumber: action.payload.step,
-        xIsNext: action.payload.step % 2 === 0
-      });
-    case loginActions.USER_LOGOUT: {
-      return state.merge(initialState);
-    }
-    default:
-      return state;
-  }
-}
+const initialState = completeState(stateDescription);
 
-export default reducer;
+const reducerDescription = {
+  [actions.CHANGE_SQUARE_STATUS]: (state, action) =>
+    state.merge({
+      squareList: editSquare(state.squareList, action.payload.idSquare, action.payload.value),
+      history: state.history.concat({
+        squareList: editSquare(state.squareList, action.payload.idSquare, action.payload.value)
+      }),
+      stepNumber: state.history.length,
+      xIsNext: !state.xIsNext,
+      winner: calculateWinner(editSquare(state.squareList, action.payload.idSquare, action.payload.value))
+    }),
+  [actions.JUMP_TO_STEP]: (state, action) =>
+    state.merge({
+      stepNumber: action.payload.step,
+      xIsNext: action.payload.step % 2 === 0
+    }),
+  [loginActions.USER_LOGOUT]: state => state.merge(initialState)
+};
+
+export default createReducer(Immutable(initialState), reducerDescription);
