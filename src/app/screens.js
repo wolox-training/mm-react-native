@@ -6,6 +6,7 @@ import { headerStyle, headerTitleStyle } from '../config/navigationStyles';
 
 import Todo from './screens/Todo';
 import Book from './screens/Book';
+
 import BookDetail from './screens/Book/screens/BookDetail';
 
 const RootStack = createStackNavigator(

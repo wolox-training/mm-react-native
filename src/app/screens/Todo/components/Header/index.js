@@ -17,7 +17,7 @@ function Header({ inputValue, onAddItem, onChange }) {
         onSubmitEditing={onAddItem}
         placeholder={strings.enterItem}
         blurOnSubmit={false}
-        returnKeyType={strings.done}
+        returnKeyType="done"
         style={styles.input}
       />
     </View>
