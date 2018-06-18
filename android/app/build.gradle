@@ -109,11 +109,11 @@ android {
     }
     signingConfigs {
         release {
-            if (project.hasProperty('OLIVER_RELEASE_STORE_FILE')) {
-                storeFile file(OLIVER_RELEASE_STORE_FILE)
-                storePassword OLIVER_RELEASE_STORE_PASSWORD
-                keyAlias OLIVER_RELEASE_KEY_ALIAS
-                keyPassword OLIVER_RELEASE_KEY_PASSWORD
+            if (project.hasProperty('TRAINING_RELEASE_STORE_FILE')) {
+                storeFile file(TRAINING_RELEASE_STORE_FILE)
+                storePassword TRAINING_RELEASE_STORE_PASSWORD
+                keyAlias TRAINING_RELEASE_KEY_ALIAS
+                keyPassword TRAINING_RELEASE_KEY_PASSWORD
             }
         }
     }
