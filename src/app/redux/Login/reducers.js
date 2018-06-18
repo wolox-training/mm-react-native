@@ -6,10 +6,11 @@ import userService from '../../../services/UserService';
 import { actions } from './actions';
 
 const stateDescription = {
-  isLoading: false
+  isLoading: false,
+  user: null
 };
 
-const initialState = completeState(stateDescription);
+const initialState = completeState(stateDescription, ['isLoading']);
 
 const reducerDescription = {
   primaryActions: [actions.USER_LOGIN],
